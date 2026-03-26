@@ -1,0 +1,343 @@
+:root {
+  --primary: linear-gradient(135deg, #ff9f1c, #ff6b35);
+  --secondary: #1e293b;
+  --bg-light: #f8fafc;
+  --bg-dark: #0f172a;
+  --text-light: #334155;
+  --text-dark: #e2e8f0;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --border-radius: 12px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg-light: var(--bg-dark);
+  --text-light: var(--text-dark);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 400;
+  background: var(--bg-light);
+  color: var(--text-light);
+  line-height: 1.6;
+  direction: rtl;
+  scroll-behavior: smooth;
+  transition: var(--transition);
+}
+
+/* Header */
+header {
+  background: var(--primary);
+  color: white;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--card-shadow);
+}
+
+header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.dark-toggle {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Nav */
+nav {
+  background: var(--secondary);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+nav a {
+  color: white;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+nav a:hover, nav a.active {
+  background: #ff9f1c;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1') center/cover;
+  height: clamp(60vh, 70vw, 80vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero h1 {
+  background: rgba(0,0,0,0.7);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  font-size: clamp(2rem, 6vw, 4rem);
+  animation: fadeInUp 1s ease;
+}
+
+/* Sections */
+.section {
+  padding: clamp(4rem, 8vw, 6rem) 5%;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -10px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+[data-theme="dark"] .card {
+  background: #1e293b;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Videos */
+.video {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Contact */
+.contact {
+  background: white;
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  margin: auto;
+  box-shadow: var(--card-shadow);
+}
+
+.contact input, 
+.contact textarea {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.contact input:focus, 
+.contact textarea:focus {
+  outline: none;
+  border-color: #ff9f1c;
+}
+
+.contact button {
+  background: var(--primary);
+  border: none;
+  padding: 1rem 2rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.contact button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="dark"] .contact {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .contact input, 
+[data-theme="dark"] .contact textarea {
+  background: #334155;
+  color: white;
+  border-color: #475569;
+}
+
+/* Footer & WhatsApp */
+footer {
+  background: var(--secondary);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
+}
+
+.facebook {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #1877F2, #0e5a8a);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.facebook:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .facebook {
+    right: 80px;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    padding: 0.8rem 1rem;
+  }
+  .dark-toggle {
+    position: static;
+    margin-top: 1rem;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
