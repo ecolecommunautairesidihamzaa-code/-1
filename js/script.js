@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
 const contactForm = document.querySelector('.contact');
 contactForm?.addEventListener('submit', (e) => {
   e.preventDefault();
-  emailjs.sendForm('service_8ztk73n', 'YOUR_TEMPLATE_ID', contactForm, 'HYQEsk9D9yTfbuUhw')
+emailjs.sendForm('service_8ztk73n', '__ejs-test-mail-service__', contactForm, 'HYQEsk9D9yTfbuUhw')
     .then(() => { 
       alert('تم إرسال الرسالة بنجاح!');
       contactForm.reset(); 
